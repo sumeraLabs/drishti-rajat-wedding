@@ -205,6 +205,7 @@
     outline:2px solid var(--gold);outline-offset:1px;
   }
   .field textarea{resize:vertical;min-height:72px;}
+  .field-hint{font-size:13px;color:var(--ink);opacity:.65;margin-top:6px;font-family:var(--body);}
   fieldset{border:1px solid var(--line);border-radius:10px;padding:14px 16px;}
   legend{
     font-family:var(--label);font-size:11px;letter-spacing:.14em;text-transform:uppercase;
@@ -433,6 +434,32 @@
           <label class="check-row"><input type="checkbox" name="events" value="All"> All of them</label>
         </fieldset>
         <div class="field">
+          <label for="f-stay">Will You Need a Stay Arranged by Us?</label>
+          <select id="f-stay" name="needStay">
+            <option value="No" selected>No, I'm sorted for a place to stay</option>
+            <option value="Yes">Yes, please arrange accommodation</option>
+          </select>
+          <p class="field-hint">Coming from outside Jaipur? Select "Yes" and we'll take care of your stay.</p>
+        </div>
+        <div class="field stay-extra" id="stay-extra" hidden>
+          <label for="f-travel-from">Travelling From (City)</label>
+          <input type="text" id="f-travel-from" name="travelFrom" placeholder="e.g. Delhi, Mumbai">
+        </div>
+        <div class="field stay-extra" id="stay-checkin-wrap" hidden>
+          <label for="f-checkin">Check-in Date</label>
+          <input type="date" id="f-checkin" name="checkIn">
+        </div>
+        <div class="field stay-extra" id="stay-checkout-wrap" hidden>
+          <label for="f-checkout">Check-out Date</label>
+          <input type="date" id="f-checkout" name="checkOut">
+        </div>
+        <div class="field stay-extra" id="stay-rooms-wrap" hidden>
+          <label for="f-rooms">Number of Rooms Needed</label>
+          <select id="f-rooms" name="roomsNeeded">
+            <option>1</option><option>2</option><option>3</option><option>4</option><option>5+</option>
+          </select>
+        </div>
+        <div class="field">
           <label for="f-note">A Note for the Couple</label>
           <textarea id="f-note" name="note" placeholder="Blessings, questions, anything at all..."></textarea>
         </div>
@@ -522,6 +549,16 @@
       navigator.clipboard.writeText(text).then(function(){done(true);}, function(){done(false);});
     } else { done(false); }
   });
+
+  // ---------- Accommodation toggle ----------
+  var staySelect = document.getElementById("f-stay");
+  var stayExtras = document.querySelectorAll(".stay-extra");
+  function syncStayFields(){
+    var needed = staySelect.value === "Yes";
+    stayExtras.forEach(function(el){ el.hidden = !needed; });
+  }
+  staySelect.addEventListener("change", syncStayFields);
+  syncStayFields();
 
   // ---------- RSVP submission ----------
   // Replace GAS_URL below with your deployed Google Apps Script Web App URL.
