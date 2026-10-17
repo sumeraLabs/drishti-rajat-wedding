@@ -237,6 +237,14 @@
     color:var(--maroon);margin-bottom:10px;
   }
   .info-card p{color:var(--ink-soft);font-size:16px;}
+  .info-card-primary{
+    border:1.5px solid var(--gold);box-shadow:0 8px 24px rgba(0,0,0,.08);
+  }
+  .contact-badge{
+    display:inline-block;font-family:var(--label);font-size:10px;letter-spacing:.14em;
+    text-transform:uppercase;color:#fff;background:var(--maroon);
+    border-radius:999px;padding:4px 12px;margin-bottom:12px;
+  }
   .map-link{
     display:inline-block;margin-top:12px;font-family:var(--label);font-size:11px;
     letter-spacing:.14em;text-transform:uppercase;color:var(--maroon);
@@ -476,12 +484,21 @@
       <span class="eyebrow">Things to Know</span>
       <h2>Need Anything?</h2>
       <div class="info-grid" style="margin-top:40px;">
-        <div class="info-card">
-          <h3>Travel &amp; Other Questions</h3>
-          <p>For travel, stay, or any other details, reach out to Rajat directly.</p>
+        <div class="info-card info-card-primary">
+          <span class="contact-badge">Primary Contact</span>
+          <h3>Charchit (Groom's Brother)</h3>
+          <p>Rajat's busy with wedding duties, so for travel, stay, or any other details, Charchit's your best bet.</p>
           <div class="phone-copy">
-            <span id="phone-text">+91 95291 02876</span>
-            <button type="button" id="copy-phone">Copy</button>
+            <span class="phone-text">+91 63780 27372</span>
+            <button type="button" class="copy-phone-btn">Copy</button>
+          </div>
+        </div>
+        <div class="info-card">
+          <h3>Or Reach Rajat</h3>
+          <p>For anything you'd rather ask the groom himself.</p>
+          <div class="phone-copy">
+            <span class="phone-text">+91 95291 02876</span>
+            <button type="button" class="copy-phone-btn">Copy</button>
           </div>
         </div>
       </div>
@@ -541,13 +558,14 @@
     } else { done(false); }
   });
 
-  document.getElementById("copy-phone").addEventListener("click", function(){
-    var btn = this;
-    var text = document.getElementById("phone-text").textContent.trim();
-    function done(ok){ btn.textContent = ok ? "Copied!" : "Try again"; setTimeout(function(){ btn.textContent="Copy"; }, 1800); }
-    if(navigator.clipboard && navigator.clipboard.writeText){
-      navigator.clipboard.writeText(text).then(function(){done(true);}, function(){done(false);});
-    } else { done(false); }
+  document.querySelectorAll(".copy-phone-btn").forEach(function(btn){
+    btn.addEventListener("click", function(){
+      var text = btn.closest(".phone-copy").querySelector(".phone-text").textContent.trim();
+      function done(ok){ btn.textContent = ok ? "Copied!" : "Try again"; setTimeout(function(){ btn.textContent="Copy"; }, 1800); }
+      if(navigator.clipboard && navigator.clipboard.writeText){
+        navigator.clipboard.writeText(text).then(function(){done(true);}, function(){done(false);});
+      } else { done(false); }
+    });
   });
 
   // ---------- Accommodation toggle ----------
