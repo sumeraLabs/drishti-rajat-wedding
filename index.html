@@ -2,9 +2,9 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Drishti &amp; Rajat</title>
+<title>Rajat &amp; Drishti</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-<meta name="description" content="You're invited to the wedding celebrations of Drishti Vashisht &amp; Rajat Sharma, 19–21 November 2026, Jaipur.">
+<meta name="description" content="You're invited to the wedding celebrations of Rajat Sharma &amp; Drishti Vashisht, 19–21 November 2026, Jaipur.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,500&family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Cinzel:wght@500;600&display=swap" rel="stylesheet">
@@ -80,6 +80,23 @@
   .hero .mini{
     font-family:var(--label);font-size:11px;letter-spacing:.3em;color:var(--maroon);
     text-transform:uppercase;margin-bottom:18px;
+  }
+  .hero .family-banner{
+    display:flex;align-items:center;justify-content:center;gap:16px;
+    margin-bottom:24px;
+  }
+  .hero .family-banner-flourish{
+    font-size:24px;line-height:1;color:var(--gold);opacity:.9;
+    font-family:serif;
+  }
+  .hero .family-banner-flourish-right{transform:scaleX(-1);}
+  .hero .family-banner-text{
+    font-family:var(--display);font-style:italic;font-weight:600;
+    font-size:clamp(16px,3.4vw,19px);letter-spacing:.03em;
+    color:var(--maroon-deep);
+    padding:4px 2px;
+    border-top:1px solid var(--gold-light);
+    border-bottom:1px solid var(--gold-light);
   }
   .hero .names{
     font-family:var(--display);
@@ -286,8 +303,13 @@
   <!-- HERO -->
   <section class="hero">
     <div class="wrap">
+      <div class="family-banner">
+        <span class="family-banner-flourish">❧</span>
+        <span class="family-banner-text">Indoriya Family Welcomes You</span>
+        <span class="family-banner-flourish family-banner-flourish-right">❧</span>
+      </div>
       <div class="mini">Together with their families</div>
-      <h1 class="names">Drishti<br><span class="weds">Weds</span><br>Rajat</h1>
+      <h1 class="names">Rajat<br><span class="weds">Weds</span><br>Drishti</h1>
       <div class="dates">19 – 21 November 2026</div>
       <div class="venue-line">Jaipur, Rajasthan</div>
       <div class="scroll-cue">Scroll Down ⌄</div>
@@ -518,7 +540,7 @@
   </section>
 
   <footer>
-    <div class="names">Drishti &amp; Rajat</div>
+    <div class="names">Rajat &amp; Drishti</div>
     <div class="sub">19–21 November 2026 · Jaipur, Rajasthan</div>
   </footer>
 
@@ -547,7 +569,7 @@
 
   // ---------- Share ----------
   var pageUrl = window.location.href;
-  var waText = encodeURIComponent("You're invited to Drishti & Rajat's wedding! 19–21 Nov 2026, Jaipur. " + pageUrl);
+  var waText = encodeURIComponent("You're invited to Rajat & Drishti's wedding! 19–21 Nov 2026, Jaipur. " + pageUrl);
   document.getElementById("whatsapp-share").href = "https://wa.me/?text=" + waText;
 
   document.getElementById("copy-link").addEventListener("click", function(){
